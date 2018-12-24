@@ -1,16 +1,14 @@
 public class Employee(){
+
+    public Employee(){
     
-    public Integer empId
-    public String teller
-
-    public String empName(String employee){
-
-        String teller = employee;
-
-        if (teller != employee){
-            //ensure employee doesn't already exist before creating a new one
-        };
+    public Integer empId = EMP-{0000};
+    public String employee;
+    public String empFirstName;
+    public String empLastName;
     }
-    
 
+    public List<empType> employee = new List<empType>();
+
+    
 }

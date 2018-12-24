@@ -1,4 +1,4 @@
-public abstract Transaction(){
+public class Transaction extends Account(){
 
     public Integer transactionID;
     public Decimal amount;
@@ -6,20 +6,22 @@ public abstract Transaction(){
     public Integer toAccount;
     public String transactionType;
 
-    Transaction transaction = new Transaction();
+    public List<transaction> transaction = new List<transaction>();
 
-    public class Deposit(Decimal amount){
+    public abstract class Deposit(Decimal amount){
         amount += amount;
         return Account.accountBalance();
     }
-    public class Withdrawal(Decimal amount){
+    public abstract class Withdrawal(Decimal amount){
         amount =- amount;
         return Account.accountBalance();
     }
 
-    public class Transfer(Decimal amount){
-        Account.accountBalance(fromAccount) =- amount;
+    public abstract class Transfer(Decimal amount){
+        Account.accountBalance(fromAccount) -= amount;
         Account.accountBalance(toAccount) += amount;
+
+        System.debug('Transfered ' + amount + ' from ' + Account.fromAccount() + ' to ' Account.toAccount();
 
         return Account.accountBalance(fromAccount) + Account.accountBalance(toAccount)//account balances for both accounts
     }
@@ -27,4 +29,5 @@ public abstract Transaction(){
     public class checkAccountBalance(){
         if(checkAccountBalance() >= 0 ? Account.accountBalance():System.debug="NSF");
     }
+
 }
