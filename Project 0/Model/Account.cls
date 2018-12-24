@@ -14,7 +14,7 @@ public abstract class Account(){
     }
 
     public String accountType(){
-        
+        //TODO: setup types of accounts: Checking, Savings, etc.
     }
 
     public Integer fromAccount(){
