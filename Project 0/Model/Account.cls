@@ -1,28 +1,35 @@
 public abstract class Account(){
 
+    public class Account(){
     public Integer accountId;
     public String accountType;
+    public Currency amount;
     public String authorizedUser1;
     public String authorizedUser2;
-    public Decimal balance;    
+    public Currency accountBalance;
+    };
 
-    public List<account> account= new List<Account>();
+    public class List<account> account= new List<Account>(){
 
-    public Decimal accountBalance(Decimal amount{
-        balance += amount;
+    };
+
+    public class Decimal deposit(amount){
+        accountBalance += amount;
         return balance;
-    }
+    };
 
-    public String accountType(){
+    public class String accountType(){
         //TODO: setup types of accounts: Checking, Savings, etc.
-    }
 
-    public Integer fromAccount(){
+    };
+
+    public class Currency fromAccount(Currency amount){
         //TODO: setup conditional statement from which account to withdraw funds
-    }
+
+    };
     
-    public Integer toAccount(){
+    public class Currency toAccount(Currency amount){
         //TODO: setup conditional statement for depositing funds into
 
-    }
+    };
 }
