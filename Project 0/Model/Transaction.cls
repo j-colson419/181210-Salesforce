@@ -1,34 +1,23 @@
-public class Transaction extends Account(){
+public virtual class Transaction extends Account(){
 
-    public Integer transactionID;
     public Decimal amount;
-    public Integer fromAccount;
-    public Integer toAccount;
     public String transactionType;
+    public String msg = 'Please make a deposit.  A continued balance less than $1 will result in fees and other possible actions!'
 
     public List<transaction> transaction = new List<transaction>();
 
-    public overrides Deposit(Decimal amount){
-        Account.accountBalance() += amount;
+    public Decimal Deposit(Decimal amount){
+        Account.accountBalance(accountType) += amount;
         return Account.accountBalance();
     }
-    public overrides Withdrawal(Decimal amount){
-        Account.accountBalance() =- amount;
+    public Decimal Withdrawal(Decimal amount){
+        Account.accountBalance(accountType) =- amount;
         return Account.accountBalance();
     }
 
-    public overrides Transfer(Decimal amount){
-        //TODO: enter code to transfer funds fromAccount() to toAccount() after verifying funds are available to transfer with checkAccountBalance()
-        Account.accountBalance(Account.fromAccount()) -= amount;
-        Account.accountBalance(Account.toAccount()) += amount;
+    public abstract balTransfer(){};
 
-        System.debug('Transfered ' + amount + ' from ' + Account.fromAccount() + ' to ' Account.toAccount());
-)
-        return Account.accountBalance(fromAccount) + Account.accountBalance(toAccount)//account balances for both accounts
+    public Boolean checkAccountBalance(){
+        if(checkAccountBalance() > 0 ? Account.accountBalance() : System.error = msg);
     }
-
-    public class Boolean checkAccountBalance(){
-        if(checkAccountBalance() > 0 ? Account.accountBalance() : System.debug="Please make a deposit as there are insufficient funds in this account!");
-    }
-
-}
+};
