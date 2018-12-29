@@ -1,7 +1,7 @@
 public class Bank(){
 
-    public BankId = BID-{0000};
-    private static bankInfo = 'Bankature USA\n777 Trust Ln.,\nChicago, IL 55555'
+    public Integer BankId = BID-{0000};
+    //private static bankInfo = 'Bankature USA\n777 Trust Ln.,\nChicago, IL 55555'
 
     public static void class Main(){
 
@@ -10,13 +10,6 @@ public class Bank(){
         Customer customer = new Customer(new Account(new Transction(deposit))); //A customer needs to open a new account with a deposit
         
     }
-
-    public static string class bankName(){
-     
-        return bankId + bankIfno;
-
-    };
-
 }
 
 
