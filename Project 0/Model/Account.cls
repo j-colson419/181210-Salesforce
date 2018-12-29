@@ -1,35 +1,28 @@
 public abstract class Account(){
 
     public class Account(){
-    public Integer accountId;
-    public String accountType;
-    public Currency amount;
-    public String authorizedUser1;
-    public String authorizedUser2;
-    public Currency accountBalance;
+        public Integer accountId;
+        public String accountType;
+        public Decimal amount;
+        public String authorizedUser1;
+        public String authorizedUser2;
+        public Decimal accountBalance;
     };
 
-    public class List<account> account= new List<Account>(){
+    public String List<accounts> customerAccounts = new List<accounts>(accountType()){};
 
-    };
-
-    public class Decimal deposit(amount){
-        accountBalance += amount;
-        return balance;
-    };
-
-    public class String accountType(){
+    public String accountType(){
         //TODO: setup types of accounts: Checking, Savings, etc.
+        Account accountType = new Account();
+        System.debug('You\'ve successfully created a new ' + accountType + ' account');
+        Return accountType;
+    };
+
+    public String Balance(Decimal Amount){
 
     };
 
-    public class Currency fromAccount(Currency amount){
-        //TODO: setup conditional statement from which account to withdraw funds
-
-    };
-    
-    public class Currency toAccount(Currency amount){
-        //TODO: setup conditional statement for depositing funds into
-
+    AuthO authorizedUser = new AuthO(Customer.verifyAge()){
+        if (AuthorizedUser1 != null ? AuthorizedUser1 = authorizedUser, AuthorizedUser2 = authorizedUser);
     };
 }
