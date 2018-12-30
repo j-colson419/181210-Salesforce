@@ -6,11 +6,11 @@ public virtual class Transaction extends Account{
 
     public List<transactions> acctTrans = new List<transactions>();
 
-    public Decimal Deposit(Decimal amount){
+    public Decimal deposit(Decimal amount){
         Account.accountBalance(accountType) += amount;
         return Account.accountBalance();
     }
-    public Decimal Withdrawal(Decimal amount){
+    public Decimal withdrawal(Decimal amount){
         Account.accountBalance(accountType) =- amount;
         return Account.accountBalance();
     }

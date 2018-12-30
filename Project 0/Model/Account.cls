@@ -1,6 +1,7 @@
 public abstract class Account{
 
-    public class Account{
+    /**
+     * public class Account{
         public Integer accountId;
         public String accountType;
         public Decimal amount;
@@ -8,14 +9,12 @@ public abstract class Account{
         public String authorizedUser2;
         public Decimal accountBalance;
     }
+     */
 
     public List<accounts> customerAccounts = new List<accounts>(accountType());
-    {
-        Account accounts = new Account(accountType());
-
-        
-    }
-
+    
+    Account accounts = new Account(accountType());
+    
     public String accountType(){
         //TODO: setup types of accounts: Checking, Savings, etc.
         Account accountType = new Account();
@@ -23,12 +22,11 @@ public abstract class Account{
         Return accountType;
     }
 
-    public String Balance(Decimal Amount){
-
-    }
+    public abstract accountBalance(Decimal Amount);
 
     AuthO authorizedUser = new AuthO(Customer.verifyAge());
-    {
+    
+    public String authorizedUser(){
         if (AuthorizedUser1 != null ? AuthorizedUser1 = authorizedUser : AuthorizedUser2 = authorizedUser)
     }
 }

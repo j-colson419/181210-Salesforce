@@ -5,7 +5,7 @@ public class Transfer extends Transaction{
     public overrides balTransfer(String accountType, Decimal amount){
         switch on Transaction{
             when transactionType Transfer{
-                If(accountBalance(accountType) >= amount ? accountBalance(accountType) -= amount : System.error(msg))
+                If(accountBalance(accountType) >= amount ? Transaction.withdrawal() : System.error(msg))
                 return accountBalance(accountType);
             }
             when transactionType Deposit{
