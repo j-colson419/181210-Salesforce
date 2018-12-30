@@ -1,10 +1,10 @@
-public virtual class Transaction extends Account(){
+public virtual class Transaction extends Account{
 
     public Decimal amount;
     public String transactionType;
-    public String msg = 'Please make a deposit.  A continued balance less than $1 will result in fees and other possible actions!'
+    public String msg = 'Please make a deposit.  A continued balance less than $1 will result in fees and other possible actions!';
 
-    public List<transaction> transaction = new List<transaction>();
+    public List<transactions> acctTrans = new List<transactions>();
 
     public Decimal Deposit(Decimal amount){
         Account.accountBalance(accountType) += amount;
@@ -15,9 +15,9 @@ public virtual class Transaction extends Account(){
         return Account.accountBalance();
     }
 
-    public abstract balTransfer(){};
+    public abstract balTransfer(){}
 
     public Boolean checkAccountBalance(){
-        if(checkAccountBalance() > 0 ? Account.accountBalance() : System.error = msg);
+        if(checkAccountBalance() > 0 ? Account.accountBalance() : System.error = msg)
     }
-};
+}
