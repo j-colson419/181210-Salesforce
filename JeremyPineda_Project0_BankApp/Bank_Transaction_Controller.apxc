@@ -1,0 +1,36 @@
+public class Bank_Transaction_Controller {
+	/* The purpose of this class is to provide the transaction functionality
+	 * for the Bank application.
+	 */
+    
+    public static void subtractFromBalance(ID accountID, Double amount){
+        
+         Customer_Account__c custAccount = [SELECT Balance__c FROM Customer_Account__c WHERE Id = :accountID LIMIT 1];
+        
+            Double currentBalance = Double.valueOf(custAccount.Balance__c);
+        	
+        if(currentBalance < amount)
+        {
+         	System.debug('You have inssuficient funds');   
+        }
+        else
+        {
+          	currentBalance -= amount;
+            custAccount.Balance__c = currentBalance;
+          update custAccount;   
+        }     
+                
+    }
+    
+    public static void addToBalance(ID accountID, Double amount){ 
+        
+        
+        Customer_Account__c custAccount = [SELECT Balance__c FROM Customer_Account__c WHERE Id = :accountID LIMIT 1];
+        
+            Double currentBalance = Double.valueOf(custAccount.Balance__c);
+        
+        	custAccount.Balance__c += amount;
+            update custAccount;
+        }
+        
+    }

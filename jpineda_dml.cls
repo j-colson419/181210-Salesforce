@@ -51,3 +51,25 @@
      *      emptyRecycleBin         EmptyRecycleBinResult Class
      */
     
+
+#Transaction Control
+ /*
+  *
+  * Savepoint - lets you revert back to a previous state
+  * 
+  * Timeline of savepoints, you would roll back to the highest one and all save points in between are deleted.  
+  * 
+  * ****Back to the future****
+  *
+  *
+  *
+  * The following counts as a DML statement
+  *
+  * Savepoint sp1 = Database.setSavePoint();
+  *
+  * Database.rollback();
+  *
+  *
+  * A transaction is every piece of code that runs
+  *
+  */

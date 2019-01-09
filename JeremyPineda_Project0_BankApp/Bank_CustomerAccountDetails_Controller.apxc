@@ -1,0 +1,193 @@
+public class Bank_CustomerAccountDetails_Controller {
+
+   public ID caId {
+       get {
+           if ( caId == null ) {
+               caId = apexPages.currentPage().getParameters().get('caid');
+              
+           }
+
+           return caId;
+       }
+       set; /* make sure you grab the info you need about the customer_account
+       utilizing the caId whenever it is changed*/
+   }
+
+   public Customer_Account__c customer_account {
+       get
+       {
+           customer_account = [SELECT Name, Authorized_User_1__r.First_Name__c, Authorized_User_1__r.Last_Name__c, Authorized_User_2__r.First_Name__c, 
+                               Authorized_User_2__r.Last_Name__c, Balance__c, Account_Type__c,
+                               (SELECT From_Account__c, To_Account__c FROM Customer_Account__c.Bank_Transactions__r)
+                               FROM Customer_Account__c WHERE Id = :caId];
+           return customer_account;
+       }
+       set;
+   }
+
+   public Bank_Transaction__c currentTransaction {
+       get
+       {
+           if(currentTransaction == null )
+           {
+           Bank_Transaction__c a = new Bank_Transaction__c();
+
+           currentTransaction = a;
+
+           currentTransaction.Amount__c = 0.00;
+
+           currentTransaction.From_Account__c = caId;
+
+           }
+
+           return currentTransaction;
+       }
+       set;
+   }
+
+   public Boolean displayDepositModal {
+       get; /*this should start as false*/
+       set;
+   }
+
+   public Boolean displayTransferModal {
+       get; /* this should start as false */
+       set;
+   }
+
+   public Boolean displayWithdrawalModal {
+       get; /* this should start as false */
+       set;
+   }
+
+
+   public void openDepositModal(){
+      
+           currentTransaction.RecordTypeId = Schema.SObjectType.Bank_Transaction__c.getRecordTypeInfosByDeveloperName().get
+               ('Deposit').getRecordTypeId();
+
+           currentTransaction.To_Account__c = caId;
+      		 currentTransaction.Amount__c = 0.00;//We are setting the amount to zero when the modal opens to prevent getting an error when the user tries to cancel the transaction.
+
+           displayDepositModal = true;
+           //currentTransaction.To_Account__c = new Id();
+   }
+
+   public void closeDepositModal(){
+       
+       displayDepositModal = false;
+       currentTransaction = new Bank_Transaction__c();
+       //currentTransaction.To_Account__c = new Id();
+
+   }
+
+   public PageReference deposit(){
+       
+
+        Double amount = currentTransaction.Amount__c;//converting currency to a double.
+
+       
+       Bank_Transaction_Controller.addToBalance(caId, amount); //Do not need to create an instance of the class.
+	   insert currentTransaction;
+       /* do not edit or remove the below code */
+       PageReference pageRef = new PageReference('/apex/Bank_TransactionHistory_Page');
+       pageRef.setRedirect(true);
+       pageRef.getParameters().put('caid', caId);
+       return pageRef;
+   }
+public void openTransferModal(){
+       
+           currentTransaction.RecordTypeId = Schema.SObjectType.Bank_Transaction__c.getRecordTypeInfosByDeveloperName().get
+               ('Transfer').getRecordTypeId();
+    		currentTransaction.From_Account__c = caId;
+           displayTransferModal = true;
+    		currentTransaction.Amount__c = 0.00;
+           //currentTransaction.To_Account__c = '';
+
+   }
+
+   public void closeTransferModal(){
+      
+       displayTransferModal = false;
+       currentTransaction = new Bank_Transaction__c();
+
+   }	
+
+   public PageReference transfer(){
+       
+	   
+       Double amount = currentTransaction.Amount__c;//converting currency to a double.
+       
+          try
+       {
+           if(customer_account.Balance__c < currentTransaction.Amount__c) // checking to see if the user has enough funds.
+           throw new customException('Insufficient Funds');
+           
+           else{
+        Bank_Transaction_Controller.subtractFromBalance(currentTransaction.From_Account__c, amount);// calculating the transaction
+       Bank_Transaction_Controller.addToBalance(currentTransaction.To_Account__c, amount);// calculating the transaction
+       insert currentTransaction;
+       	}
+        
+       }
+       catch (customException a)
+       {
+           Apexpages.addMessage(new Apexpages.Message(ApexPages.severity.ERROR, a.getMessage())); // adding the error message to our modal.
+           return null; //we are refraining from leaving the page to allow the user to change the amount they are allowd to transfer.
+       }
+       
+       
+       /* do not edit or remove the below code */
+       PageReference pageRef = new PageReference('/apex/Bank_TransactionHistory_Page');
+       pageRef.setRedirect(true);
+       pageRef.getParameters().put('caid', caId);
+       return pageRef;
+   }
+
+   public void openWithdrawalModal(){
+       
+           currentTransaction.RecordTypeId = Schema.SObjectType.Bank_Transaction__c.getRecordTypeInfosByDeveloperName().get
+           ('Withdrawl').getRecordTypeId();
+       		currentTransaction.Amount__c = 0.00;
+       		currentTransaction.From_Account__c = caId;
+           displayWithdrawalModal = true;
+
+   }
+
+   public void closeWithdrawalModal(){
+       
+       displayWithdrawalModal = false;
+       currentTransaction = new Bank_Transaction__c();
+	   
+   }
+
+   public PageReference withdrawal(){
+       
+       Double amount = currentTransaction.Amount__c;//converting currency to a double.
+       
+       try
+       {
+           if(customer_account.Balance__c < currentTransaction.Amount__c)// checking to see if the user has enough funds.
+           throw new customException('Insufficient Funds');// we created a new class for exception to allow it to carry this information and then allows itself to be pulled from that class.
+           
+           else{
+         Bank_Transaction_Controller.subtractFromBalance(caId, amount); //Do not need to create an instance of the class.
+		 insert currentTransaction; //adding the transaction to the 
+       	}
+        
+       }
+       catch (customException a)
+       {
+           Apexpages.addMessage(new Apexpages.Message(ApexPages.severity.ERROR, a.getMessage())); // adding the error message to our modal.
+           return null; //we are refraining from leaving the page to allow the user to change the amount they are allowd to withdrawl.
+       }
+       
+       
+
+       /* do not edit or remove the below code */
+       PageReference pageRef = new PageReference('/apex/Bank_TransactionHistory_Page');
+       pageRef.setRedirect(true);
+       pageRef.getParameters().put('caid', caId);
+       return pageRef;
+   }
+}

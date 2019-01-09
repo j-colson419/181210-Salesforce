@@ -1,0 +1,85 @@
+public class Bank_TransactionHistory_Controller {
+
+    public ID caId {
+        get {
+            if ( caId == null ) {
+                caId = apexPages.currentPage().getParameters().get('caid');
+            	
+            }
+            
+            return caId;
+        }
+        set;
+    }
+    public boolean isSortByDate = false; //Created to toggle the field between ASC and DESC
+    public boolean isSortByAmount = false; //Created to toggle the field between ASC and DESC
+    public boolean isSortByRecordType = false; //Created to toggle the field between ASC and DESC
+    public List<Bank_Transaction__c> transactionList {
+        get{
+            if(transactionList == NULL)
+            transactionList = [SELECT Name, CreatedDate, RecordTypeId, Amount__c, From_Account__r.Name, To_Account__r.Name
+                               FROM Bank_Transaction__c WHERE From_Account__c = :caId OR To_Account__c = :caId];            
+            
+            return transactionList;
+        } //should contain any transactions related to the ID stored in caId
+        set;
+    }
+       
+    public void sortByDate(){
+            
+        if(isSortByDate){      
+            isSortByDate = false;
+        transactionList = [SELECT Id, Name, CreatedDate, RecordTypeId, Amount__c, From_Account__r.Name, To_Account__r.Name
+                               FROM Bank_Transaction__c WHERE From_Account__c = :caId OR To_Account__c = :caId 
+                               ORDER By CreatedDate DESC NULLS LAST];   // This statement checks both account Ids and then will sort
+        }
+        else{
+            isSortByDate = true;
+            transactionList = [SELECT Id, Name, CreatedDate, RecordTypeId, Amount__c, From_Account__r.Name, To_Account__r.Name
+                               FROM Bank_Transaction__c WHERE From_Account__c = :caId OR To_Account__c = :caId 
+                               ORDER By CreatedDate ASC NULLS LAST]; // This statement checks both account Ids and then will sort
+        }
+        
+        isSortByAmount = false;
+    	isSortByRecordType = false;   
+    }
+    
+    public void sortByAmount(){
+
+         if(isSortByAmount){ 
+             isSortByAmount = false;
+        transactionList = [SELECT Id, Name, CreatedDate, RecordTypeId, Amount__c, From_Account__r.Name, To_Account__r.Name
+                               FROM Bank_Transaction__c WHERE From_Account__c = :caId OR To_Account__c = :caId 
+                               ORDER By Amount__c DESC NULLS LAST];   
+        }
+        else{
+            isSortByAmount = true;
+            transactionList = [SELECT Id, Name, CreatedDate, RecordTypeId, Amount__c, From_Account__r.Name, To_Account__r.Name
+                               FROM Bank_Transaction__c WHERE From_Account__c = :caId OR To_Account__c = :caId 
+                               ORDER By Amount__c ASC NULLS LAST]; 
+        }
+        
+        isSortByDate = false;
+    	isSortByRecordType = false;   
+    }
+    
+    public void sortByRecordType(){
+        
+        if(isSortByRecordType){   
+            isSortByRecordType = false;
+        transactionList = [SELECT Id, Name, CreatedDate, RecordTypeId, Amount__c, From_Account__r.Name, To_Account__r.Name
+                               FROM Bank_Transaction__c WHERE From_Account__c = :caId OR To_Account__c = :caId 
+                               ORDER By Amount__c DESC NULLS LAST];   
+        }
+        else{
+            isSortByRecordType = true;
+            transactionList = [SELECT Id, Name, CreatedDate, RecordTypeId, Amount__c, From_Account__r.Name, To_Account__r.Name
+                               FROM Bank_Transaction__c WHERE From_Account__c = :caId OR To_Account__c = :caId 
+                               ORDER By Amount__c ASC NULLS LAST]; 
+        }
+        
+        isSortByDate = false;
+    	isSortByAmount = false;   
+    
+    }
+}

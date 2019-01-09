@@ -1,0 +1,66 @@
+public class Bank_CustomerAccountsList_Controller {
+
+     public List<Customer_Account__c> customer_accounts {
+        get {
+            if(customer_accounts == null){
+                  customer_accounts = new List<Customer_Account__c>();
+                  Customer_Account__c[] a = [SELECT  Id ,Name, Account_Type__c, Authorized_User_1__r.First_Name__c, Authorized_User_1__r.Last_Name__c,
+                                               Authorized_User_2__r.First_Name__c,Authorized_User_2__r.Last_Name__c FROM Customer_Account__c]; //This code is creating a variable that stores all of our information need to store the list of accounts with all the information need to be displayed.
+
+                    for(Customer_Account__c b : a)
+                    {
+                        customer_accounts.add(b);
+                        System.debug('This added ' + b );
+                    }
+            }
+
+            return customer_accounts;
+        }
+        set;
+    }
+          
+    
+    public String customerName {
+        get;            
+        
+        set;
+    }
+    
+    public String accountType {
+        get;
+        set;
+    }
+    
+    public ID accountSelected { 
+        get; 
+        set; 
+    }
+    
+    public void getAccountsByCustomerName(){
+        
+        String likeName = '%' + customerName + '%';// We are getting any amount of characters that start or ends with the name put into the customerName field.
+        
+        customer_accounts = [SELECT  Name, Account_Type__c, Authorized_User_1__r.First_Name__c, Authorized_User_1__r.Last_Name__c,
+                             	    Authorized_User_2__r.First_Name__c,Authorized_User_2__r.Last_Name__c 
+		FROM Customer_Account__c
+		WHERE Authorized_User_1__r.First_Name__c  LIKE :likeName OR Authorized_User_1__r.Last_Name__c LIKE :likeName OR
+                            Authorized_User_2__r.First_Name__c  LIKE :likeName OR Authorized_User_2__r.Last_Name__c LIKE :likeName];//We are checking our likeName variable that I built using the wild cards to see if the input name is similar to any count beggining or ending in the likeName.
+    }
+    
+    public void getAccountsByAccountType(){
+        
+        String accountType2 = '%' + accountType + '%';
+        
+        customer_accounts = [SELECT  Name, Account_Type__c, Authorized_User_1__r.First_Name__c, Authorized_User_1__r.Last_Name__c,
+                             	    Authorized_User_2__r.First_Name__c,Authorized_User_2__r.Last_Name__c 
+		FROM Customer_Account__c
+		WHERE Account_Type__c LIKE : accountType2];        
+    }
+    
+    public PageReference goToAccountPage(){
+        PageReference pageRef = new PageReference('/apex/Bank_CustomerAccountDetails_Page');
+        pageRef.setRedirect(true);
+        pageRef.getParameters().put('caid', accountSelected);
+        return pageRef;
+    }
+}

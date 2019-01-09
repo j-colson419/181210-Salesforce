@@ -1,0 +1,5 @@
+Customer_Account__c [] a = [SELECT Name, Account_Type__c, Authorized_User_1__c, 	Authorized_User_2__c];
+
+for(Customer_Account__c b : a){
+    System.debug(b);
+}
