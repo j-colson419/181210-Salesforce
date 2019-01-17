@@ -1,0 +1,231 @@
+<apex:page controller="Bank_CustomerAccountDetails_Controller" docType="html-5.0" lightningStylesheets="true">
+    <apex:slds />
+    <apex:form >
+        <div>
+            <div class="slds-grid slds-grid_align-center">
+                <article class="slds-card slds-size_8-of-12">
+                    <div class="slds-card__header slds-grid">
+                        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                            <div class="slds-media__figure">
+                                <span class="slds-icon_container slds-icon-standard-account" title="Customer Account">
+                                    <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                        <use xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/standard-sprite/svg/symbols.svg#account')}"></use>
+                                    </svg>
+                                    <span class="slds-assistive-text">Customer Account</span>
+                                </span>
+                            </div>
+                            <div class="slds-media__body">
+                                <h2 class="slds-card__header-title">
+                                    <a href="javascript:void(0);" class="slds-card__header-link slds-truncate" title="Customer Account">
+                                        <span>Customer Account</span>
+                                    </a>
+                                </h2>
+                            </div>
+                            <div class="slds-no-flex">
+                                <ul class="slds-button-group-list">
+                                    <li>
+                                        <apex:commandButton styleClass="slds-button slds-button_neutral" value="Deposit" action="{!openDepositModal}"/>
+                                    </li>
+                                    <li>
+                                        <apex:commandButton styleClass="slds-button slds-button_neutral" value="Withdrawal" action="{!openWithdrawalModal}"/>
+                                    </li>
+                                    <li>
+                                        <apex:commandButton styleClass="slds-button slds-button_neutral" value="Transfer" action="{!openTransferModal}"/>
+                                    </li>
+                                </ul>
+                                
+                            </div>
+                        </header>
+                    </div>
+                    
+                    <div class="slds-card__body slds-card__body_inner">
+                        <apex:outputPanel rendered="{! ISNULL(customer_account)}">
+                            <div role="status" class="slds-spinner slds-spinner_small">
+                                <span class="slds-assistive-text">Loading</span>
+                                <div class="slds-spinner__dot-a"></div>
+                                <div class="slds-spinner__dot-b"></div>
+                            </div>
+                        </apex:outputPanel>
+                        <!--<apex:outputPanel rendered="{! NOT(ISNULL(customer_account))}">-->
+                        <table class="slds-table slds-table_cell-buffer slds-table_striped slds-no-row-hover">
+                            <thead>
+                                
+                            </thead>
+                            <tbody>
+                                <tr class="slds-hint-parent">
+                                    <th data-label="Customer Account Number" scope="row">
+                                        <div class="slds-truncate" title="Customer Account Number">
+                                            <dl class="slds-list_horizontal slds-wrap">
+                                                <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Customer Account Number">Customer Account #:</dt>
+                                                <dd class="slds-item_detail slds-truncate">{!customer_account.Name}</dd>
+                                            </dl> 
+                                        </div>
+                                    </th>
+                                    <th data-label="Account Type" scope="row">
+                                        <div class="slds-truncate" title="Account Type">
+                                            <dl class="slds-list_horizontal slds-wrap">
+                                                <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Account Type">Account Type:</dt>
+                                                <dd class="slds-item_detail slds-truncate">{!customer_account.Account_Type__c}</dd>
+                                            </dl> 
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr class="slds-hint-parent">
+                                    <th data-label="Authorized User 1" scope="row">
+                                        <div class="slds-truncate" title="Authorized User 1">
+                                            <dl class="slds-list_horizontal slds-wrap">
+                                                <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Authorized User 1">Primary Authorized User:</dt>
+                                                <dd class="slds-item_detail slds-truncate">{!customer_account.Authorized_User_1__r.First_Name__c + ' ' + customer_account.Authorized_User_1__r.Last_Name__c}</dd>
+                                            </dl> 
+                                        </div>
+                                    </th>
+                                    <apex:outputPanel rendered="{!NOT(ISNULL(customer_account.Authorized_User_2__c))}">
+                                        <th data-label="Authorized User 2" scope="row">
+                                            <div class="slds-truncate" title="Authorized User 2">
+                                                <dl class="slds-list_horizontal slds-wrap">
+                                                    <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Authorized User 2">Secondary Authorized User:</dt>
+                                                    <dd class="slds-item_detail slds-truncate">{!customer_account.Authorized_User_2__r.First_Name__c + ' ' + customer_account.Authorized_User_2__r.Last_Name__c}</dd>
+                                                </dl> 
+                                            </div>
+                                        </th>
+                                    </apex:outputPanel>
+                                    <apex:outputPanel rendered="{!ISNULL(customer_account.Authorized_User_2__c)}">
+                                        <th data-label="Blank Data" scope="row">
+                                            
+                                        </th>
+                                    </apex:outputPanel>
+                                </tr>
+                                <tr class="slds-hint-parent">
+                                    <th data-label="Current Balance" scope="row" colspan="2">
+                                        <div class="slds-truncate" title="Current Balance">
+                                            <dl class="slds-list_horizontal slds-wrap">
+                                                <dt class="slds-item_label slds-text-color_weak slds-truncate" title="Current Balance">Current Balance:</dt>
+                                                <dd class="slds-item_detail slds-truncate">{!customer_account.Balance__c}</dd>
+                                            </dl> 
+                                        </div>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!--</apex:outputPanel>-->
+                    </div>
+                </article>
+            </div>
+        </div>
+        <apex:outputPanel rendered="{!displayDepositModal}">
+            <div class="demo-only"  style="height:640px;">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <apex:commandLink styleClass="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" style="color:darkgrey" action="{!closeDepositModal}">
+                                <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                                    <use xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#close')}"></use>
+                                </svg>
+                                <span class="slds-assistive-text">Close</span>
+                            </apex:commandLink>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Deposit</h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium slds-align_absolute-center" id="modal-content-id-1">
+                            <dl class="slds-list_horizontal slds-wrap">
+                                <dt class="slds-item_label slds-text-color_weak slds-truncate" >Record Type</dt>
+                                <dd class="slds-item_detail slds-truncate">
+                                    <apex:outputField value="{!currentTransaction.recordTypeId}" />
+                                </dd>
+                                <dt class="slds-item_label slds-text-color_weak slds-truncate">Amount:</dt>
+                                <dd class="slds-item_detail slds-truncate">
+                                    <apex:inputField value="{!currentTransaction.Amount__c}"/>
+                                </dd>
+                                <dt class="slds-item_label slds-text-color_weak slds-truncate">From Account:</dt>
+                                <dd class="slds-item_detail slds-truncate">
+                                    <apex:outputField value="{!currentTransaction.From_Account__c}"/>
+                                </dd>
+                            </dl>
+                            
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <apex:commandButton styleClass="slds-button slds-button_neutral" action="{!closeDepositModal}" value="Cancel"/>
+                            <apex:commandButton styleClass="slds-button slds-button_brand" action="{!deposit}" value="Save"/>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop"></div>
+            </div>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!displayWithdrawalModal}">
+            <div class="demo-only" style="height: 640px;">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <apex:commandLink styleClass="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" style="color:darkgrey" action="{!closeWithdrawalModal}">
+                                <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                                    <use xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#close')}"></use>
+                                </svg>
+                                <span class="slds-assistive-text">Close</span>
+                            </apex:commandLink>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Withdrawal</h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <dl class="slds-list_horizontal slds-wrap">
+                                <dt class="slds-item_label slds-text-color_weak slds-truncate" >Record Type</dt>
+                                <dd class="slds-item_detail slds-truncate">
+                                    <apex:outputField value="{!currentTransaction.recordTypeId}" />
+                                </dd>
+                                <dt class="slds-item_label slds-text-color_weak slds-truncate">Amount:</dt>
+                                <dd class="slds-item_detail slds-truncate">
+                                    <apex:inputField value="{!currentTransaction.Amount__c}"/>
+                                </dd>
+                                <dt class="slds-item_label slds-text-color_weak slds-truncate">From Account:</dt>
+                                <dd class="slds-item_detail slds-truncate">
+                                    <apex:outputField value="{!currentTransaction.From_Account__c}"/>
+                                </dd>
+                            </dl>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <apex:commandButton styleClass="slds-button slds-button_neutral" action="{!closeWithdrawalModal}" value="Cancel"/>
+                            <apex:commandButton styleClass="slds-button slds-button_brand" action="{!withdrawal}" value="Save"/>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop"></div>
+            </div>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!displayTransferModal}">
+            <div class="demo-only" style="height: 640px;">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <apex:commandLink styleClass="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" style="color:darkgrey" action="{!closeTransferModal}">
+                                <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                                    <use xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Asset.SLDS, 'assets/icons/utility-sprite/svg/symbols.svg#close')}"></use>
+                                </svg>
+                                <span class="slds-assistive-text">Close</span>
+                            </apex:commandLink>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Transfer</h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <dl class="slds-list_horizontal slds-wrap">
+                                <dt class="slds-item_label slds-text-color_weak slds-truncate" >Record Type</dt>
+                                <dd class="slds-item_detail slds-truncate">
+                                    <apex:outputField value="{!currentTransaction.recordTypeId}" />
+                                </dd>
+                                <dt class="slds-item_label slds-text-color_weak slds-truncate">Amount:</dt>
+                                <dd class="slds-item_detail slds-truncate">
+                                    <apex:inputField value="{!currentTransaction.Amount__c}"/>
+                                </dd>
+                                <dt class="slds-item_label slds-text-color_weak slds-truncate">From Account:</dt>
+                                <dd class="slds-item_detail slds-truncate">
+                                    <apex:outputField value="{!currentTransaction.From_Account__c}"/>
+                                </dd>
+                            </dl>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <apex:commandButton styleClass="slds-button slds-button_neutral" action="{!closeTransferModal}" value="Cancel"/>
+                            <apex:commandButton styleClass="slds-button slds-button_brand" action="{!transfer}" value="Save"/>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop"></div>
+            </div>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,34 @@
+<apex:page controller="Bank_TransactionHistory_Controller" docType="html-5.0">
+    <apex:pageBlock>
+        <apex:form>
+        
+        </apex:form> 
+        <apex:pageBlock>
+            <apex:column >
+                    <apex:facet name="header">Account Number</apex:facet>
+                    <apex:commandLink action="{!goToAccountPage}">
+                        <apex:outputText value="{!account.Name}"/>
+                        <apex:param name="caid" value="{!account.Id}" assignTo="{!accountSelected}"/>
+                    </apex:commandLink>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">Account Type</apex:facet>
+                        <apex:outputText value="{!account.Account_Type__c}"/>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">Authorized User</apex:facet>
+                        <apex:outputText value="{!account.Authorized_User_1__r.First_Name__c + ' ' + account.Authorized_User_1__r.Last_Name__c}"/>
+                    </apex:column>
+                    <apex:column >
+                        <apex:facet name="header">Additional Authorized User</apex:facet>
+                        <apex:outputText value="{!IF(!ISBLANK(account.Authorized_User_2__c), account.Authorized_User_2__r.First_Name__c + ' ' + account.Authorized_User_2__r.Last_Name__c, 'none')}"/>
+                    </apex:column>
+                    
+            <apex:column>
+                <apex:facet name ="headerr">From Account</apex:facet>
+                <apex:outputText value="{!Transaction.">
+            </apex:column>  
+        </apex:pageBlock>
+    </apex:pageBlock> 
+    
+</apex:page>
