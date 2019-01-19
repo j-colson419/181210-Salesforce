@@ -1,0 +1,23 @@
+HTML & CSS Assignment
+Create a webpage using your knowledge of HTML and CSS.
+Requirements
+•	Come up with a theme for your webpage to follow
+•	Valid HTML markup (use an HTML validator to confirm)
+•	Use at least 20 different HTML tags
+o	Must have at least 1 form on the page
+o	Must have at least 1 image
+o	Must have at least 1 table
+•	Styling should be consistent throughout the page
+•	Style your page with at least 5 CSS rules from each: 
+o	inline styling
+o	internal stylesheet
+o	external stylesheet
+•	Show the use of CSS cascade rules for at least 1 selector/style
+•	Use classes and id's to style your page
+•	Incorporate responsive design using Bootstrap or with custom media queries
+(Optional) Advanced Requirements
+•	Design HTML document with accessibility in mind (use ARIA - accessible rich internet applications)
+•	Use a CSS preprocessor
+•	Create at least 2 CSS animations
+•	Use at least 3 CSS variables
+•	Use at least 2 flexbox containers
