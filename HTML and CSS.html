@@ -4,10 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Intro to HTML</title>
+    <!--Inline CSS
+        Declaration blocks are defined with a selector or an element selector
+        Any styling will be applied to all the selectors on the page
+        element selectors are comma separasted-->
+    <style>
+        h1, p{
+            font-size: 10px;
+
+        }
+    </style>
+    <!--External CSS
+        Browser default styles override all styling based on script order-->
+    <link rel="stylesheet" href="TestCSS"/>
 </head>
 <body>
-    <h1>This is a level 1 heading tag.</h1>
+    <a href="#div2">link to div2</a>
+    <h1 style="color: blue">This is a level 1 heading tag.</h1>
+    <!--inline styles are loaded last-->
     <h6>This is a level 6 heading tag.</h6>
     <p>This is a paragraph. Follow this: 
         <a href="http://en.bcdn.biz/images/emails_source/5aa1d06c-d409-4d4a-8d4f-d90f51350047.jpg"> cute kitten link </a>
@@ -21,8 +36,17 @@
     <div>
         <h3>
             <p>W3c schools for html tag elements: 
-                <a href="https://www.w3schools.com/"></a></p>
+                <a href="https://developer.mozilla.org"></a></p>
         </h3>
+    </div>
+    <div id="div2" class="someClassContainer">
+        <!--Id's must be unique throughout the entire page-->
+        <!--Inline elements (span):
+            - often used as a container for text
+            - doesn't require any attributes
+        -->
+        <span>Hello World!!!</span>
+
     </div>
 </body>
 </html>
