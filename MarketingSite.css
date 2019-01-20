@@ -1,0 +1,21 @@
+.header{
+    text-align: justify;
+    text-decoration-color: darkorange;
+}
+.table{
+    border-color: blue;
+}
+.thead{
+    border-bottom-style: double;
+}
+.th{
+    text-align: center;
+    text-justify: auto;
+}
+.hr{
+    border-style: dotted;
+    border-color: navy;
+}
+.footer{
+    background-color: navy;
+}
