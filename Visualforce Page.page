@@ -1,0 +1,15 @@
+<!--Visualforce (vf) markup is XML
+    xml is a tag based language similar to html 
+    can use html w/in vf pages 
+    Apex uses "apex" namespace for vf components
+<namespace>-->
+    <apex:page>
+        <apex:detail/>
+        <!-- vfp code goes -->
+        <!-- 
+            Static Resources:
+            Visualforce is Server side rendered
+            
+        -->
+        
+    </apex:page>

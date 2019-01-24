@@ -1,11 +1,14 @@
 div{
-    padding: 1px;
     background-color: goldenrod;
 }
 header{
     text-align: center;
     font-size: 45px;
     font-weight: bold;
+}
+body{
+    margin: 0px;
+    border: 0px;
 }
 table{
     padding: 5px;

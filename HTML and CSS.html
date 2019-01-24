@@ -24,6 +24,10 @@
     <h1 style="color: blue">This is a level 1 heading tag.</h1>
     <!--inline styles are loaded last-->
     <h6>This is a level 6 heading tag.</h6>
+    <!--selectors Id, Class, Name
+        with space separates the attributes
+        without space combines the attributes
+    -->
     <p>This is a paragraph. Follow this: 
         <a href="http://en.bcdn.biz/images/emails_source/5aa1d06c-d409-4d4a-8d4f-d90f51350047.jpg"> cute kitten link </a>
     </p>
@@ -47,6 +51,41 @@
         -->
         <span>Hello World!!!</span>
 
+    </div>
+    <div>
+        <form>
+            <!-- <form
+                action=""
+                target="_blank"
+                method="get">-->
+                <fieldset>
+                    <password>Password</password><!--masks the input when entering a password-->
+                    <input type="date" name="bday">
+                    <input type="file" name="myFile">
+                    <input type="email" name="email">
+                    <!--datalist is different from select because it's not a dropdown list and allows for intellisense/auto-complete-->
+                    <datalist id="browser">
+                        <option>Chrome</option>
+                        <option>Firefox</option>
+                        <option>Edge</option>
+                    </datalist>
+                    <ul>
+                        <li>List item 1</li>
+                        <li>list item 2</li>
+                        <ol>Ordered List 1</ol>
+                        <ol>ordered list 2</ol>
+                    </ul>
+                </fieldset>
+                
+        </form>
+    </div>
+    <div>
+
+        <select name="colors" size=5 multiple>
+            <option value="chatter">Chatter</option>>
+            <option></option>
+
+        </select>
     </div>
 </body>
 </html>
