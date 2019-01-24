@@ -4,58 +4,136 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="MarketingSite.css" rel="stylesheet" type="text/css">
         <title>Salesforce Marketing</title>
-        <script>
-
-        </script>
+        <style>
+            .jumbotron{
+                margin: 0px;
+            }
+            .row-even{
+                background-color:olivedrab;
+            }
+            .row-odd{
+                background-color:teal;
+            }
+            .col-header{
+                background-color:tan;
+            }
+            .submit-btn{
+                padding: 5px;
+                color:orangered;
+            }
+            .copyright{
+                text-size-adjust: small;
+            }
+            .form-group{
+                margin: 20px;
+                padding: 30px;
+                background-color: olivedrab;
+            }
+        </style>
     </head>
-    <div class="Background">
-        <img src="" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
-        <body>
-            <header>Salesforce Marketing</header>
-            <div id="MarketMetrics">
-                <i class="fas fa-chart-pie    ">Pie Chart</i>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-mid-12">
+                    <div class="text-center">
+                        <header>Salesforce Marketing Cloud</header>
+                        <div class="jumbotron">
+                            <img class="jumbotron" src="C:\Users\zerov\Documents\Revature\Repo\181210-Salesforce\design-system\assets\images\themes\oneSalesforce\banner-user-default.png">
+                            <hr class="my-2">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="MarketTable" table class="table">
+        </div>
+    </header>
+    <body>
+        <div>
+            <form id="order-form" class="form-group">
+                <h3>Socail Media Preferences Form</h3>
+                    <input type="datetime-local"></br>
+                    <input type="text" name="first-name" id="first-name" placeholder="first-name">
+                    <input type="text" name="last-name" id="last-name" placeholder="last-name"></br>
+                    <input type="address" name="address" id="address" placeholder="address"></br>
+                    <input type="city" name="city" id="city" placeholder="city">
+                    <input type="state" name="state" id="state" placeholder="state">
+                    <input type="zip" name="zip" id="zip" placeholder="zip"></br>
+                    <input type="text" name="main-phone" placeholder="main-phone">
+                    <ul>
+                        <input type="radio" name="main" value="main" checked placeholder="main">Main
+                        <input type="radio" name="cell" value="cell" unchecked placeholder="cell">Cell
+                        <input type="radio" name="other" value="other" unchecked placeholder="other">Other
+                    </ul>
+                    <h3>Select the most effective Social Media communications that impact your business outreach:</h3>
+                        <ul>
+                            <input type="checkbox" name="Chatter" placeholder="Chatter" checked>Chatter</br>
+                            <input type="checkbox" name="Facebook" placeholder="Facebook" checked>Facebook</br>
+                            <input type="checkbox" name="LinkedIn" placeholder="LinkedIn" unchecked>Linkein</br>
+                            <input type="checkbox" name="Instagram" placeholder="Instagram" checked>Instagram</br>
+                            <input type="checkbox" name="Google Hangouts" placeholder="Google Hangouts" unchecked>Google Hangouts</br>
+                            <input type="checkbox" name="Twitter" placeholder="Twitter" checked>Twitter</br>
+                            <input type="checkbox" name="Other" placeholder="Other" uncheked>Other</br>
+                        </ul>
+                    <button id="form" class="submit" type="btn primary-btn" name="Form-Submit">Submit Survey</button>
+            </form>
+            
+        </div>
+        <div id="MarketMetrics" class="container">
+            <i class="fas fa-chart-pie">Pie Chart</i>
+        </div>
+        <div>
+            <table id="TableInfo" class="table" border="solid-line" border-color="black" align="center">
                 <thead>
                     <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th colspan="6" class="col-header">Social Media Campaign converted leads to Salesforce Chatter</th>
+                    </tr>
+                    <tr scope="column" class="col-header"> 
+                        <th>Name</th>
+                        <th>e-mail</th>
+                        <th>Phone</th>
+                        <th>Company</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td scope="row"></td>
-                        <td></td>
-                        <td></td>
+                <tbody>                        
+                    <tr scope="row" class="row-odd">
+                        <td>Jeremiah Rodriguez</td>
+                        <td>8jrodriguez31@gmail.com</td>
+                        <td>904-555-1234</td>
+                        <td>Smash Hits</td>
                     </tr>
-                    <tr>
-                        <td scope="row"></td>
-                        <td></td>
-                        <td></td>
+                    <tr scope="row" class="row-even">
+                        <td>Donny Dedman</td>
+                        <td>zeorvizboss@gmail</td>
+                        <td>904-555-6789</td>
+                        <td>Bogus Bards</td>
+                    </tr>
+                    <tr scope="row" class="row-odd">
+                        <td>Caleb metcalf</td>
+                        <td>oddjobout@gmail.com</td>
+                        <td>888-555-1234</td>
+                        <td>Vegas Vegans</td>
                     </tr>
                 </tbody>
-            </table>>
-                
-            </div>
-            <hr>
-            
-        </body>
-    </div>
-    <hr>
+            </table>
+        </div>           
+    </body>
     <footer>
-            <div id="MarketForm" div class="form-group">
-                <label for="">Contact Us</label>
-                <input type="email" class="form-control" name="web-Support" id="websupportId" aria-describedby="emailHelpId" placeholder="web-support email">
-                <small id="emailHelpId" class="form-text text-muted">web-Support</small>
-                <div>
+        <div id="support-Form" class="form-group">
+            <form class="order-form">
+                <h3>Support Form</h3>
+                <!--<label for="">Support-form</label></br>-->          
+                <input type="email" class="form-control" name="email" id="webSupportId" aria-describedby="emailHelpId" placeholder="help-issue"></br>
+                <small id="emailHelpId" class="form-text text-muted"></small>
                     <address>
-                        <a href="mailto:zerovizboss@gmail.com">zerovizboss@gmail.com</a></br>
+                        <a href="mailto:zerovizboss@gmail.com">zerovizboss@gmail.com</a>
                     </address>
-                </div>
-                <form type="submit"></form>></br>
-                <p>Salesforce &copy; 2019</p><!--the copyright sympol "Entity" is &copy; -->
-            </div>
+                <button id="form" class="submit" type="btn primary-btn" name="Form-Submit">Submit Issue</button>
+            </form>
+            <p class="copyright">Salesforce &copy; 2019</p><!--the copyright sympol "Entity" is &copy; -->
+        </div>
+        <audio controls>
+            <source src="C:\Users\zerov\Downloads\Revature\The Misty Mountains Cold - The Hobbit.mp3" type="audio/mp3">
+        </audio>
     </footer>
 </html>

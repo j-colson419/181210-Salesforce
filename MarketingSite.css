@@ -1,21 +1,31 @@
-.header{
-    text-align: justify;
-    text-decoration-color: darkorange;
+div{
+    padding: 1px;
+    background-color: goldenrod;
 }
-.table{
+header{
+    text-align: center;
+    font-size: 45px;
+    font-weight: bold;
+}
+table{
+    padding: 5px;
     border-color: blue;
 }
-.thead{
+thead{
+    padding: 5px;
     border-bottom-style: double;
 }
-.th{
+th{
     text-align: center;
     text-justify: auto;
 }
-.hr{
-    border-style: dotted;
-    border-color: navy;
+footer{
+    padding: 5px;
+    background-color:goldenrod;
 }
-.footer{
-    background-color: navy;
+audio{
+    margin: 5px;
+    padding: 5px;
+    background-color: transparent;
+    
 }
