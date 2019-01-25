@@ -1,11 +1,62 @@
 {
     "students": [
         {
-            "firstName" : "Jessica",
-            "lastName" : "Colson",
+            "firstName" : "Iris",
+            "lastName" : "West",
             "birthDay" : 1,
-            "birthMonth" : 3,
-            "birthYear" : 1700
+            "birthMonth" : 1,
+            "birthYear" : 1980
+        },
+        {
+            "firstName" : "Oliver",
+            "lastName" : "Queen",
+            "birthDay" : 1,
+            "birthMonth" : 1,
+            "birthYear" : 1980
+        },
+        {
+            "firstName" : "Felicity",
+            "lastName" : "Smoak",
+            "birthDay" : 1,
+            "birthMonth" : 1,
+            "birthYear" : 1980
+        },
+        {
+            "firstName" : "Barry",
+            "lastName" : "Allen",
+            "birthDay" : 1,
+            "birthMonth" : 1,
+            "birthYear" : 1980
+        }
+    ],
+    "classes": [
+        {
+            "subject" : "Math",
+            "topic" : "Algebra",
+            "year" : 2019,
+            "semester" : "Fall",
+            "approved" : true
+        }, 
+        {
+            "subject" : "Math",
+            "topic" : "Geometry",
+            "year" : 2019,
+            "semester" : "Fall",
+            "approved" : true
+        },
+        {
+            "subject" : "Math",
+            "topic" : "Trigonometry",
+            "year" : 2019,
+            "semester" : "Fall",
+            "approved" : true
+        },
+        {
+            "subject" : "Math",
+            "topic" : "Pre-Calculus",
+            "year" : 2019,
+            "semester" : "Fall",
+            "approved" : true
         }
     ]
 }
