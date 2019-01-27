@@ -10,10 +10,10 @@ public class ApexHW1Test{
     @isTest
     public static void nFibonacciTest(){
 
-        Integer n = 0;
+        Integer n = new n();
+        ApexHW1.nFibonacciTest(n);
 
-        System.assertEquals('The fibonacci Sequence should return {0,1,1,2,3,5,8,13,21,44,65,...}')
-        System.assert ( == 0)
+        System.assertEquals('The fibonacci Sequence should return {0,1,1,2,3,5,8,13,21,44,65,...}');
     }
     
 }
