@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM Intro</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+<body style="margin-left: 30px">
+    <div class="container">
+    <div class="row" id="div1" name="paragraphHolder">
+        
+        <p class="col-sm" id="p1">Paragraph 1</p>
+        <p class="col-sm" id="p2">Paragraph 2</p>
+    </div>
+    <div class="row" id="div2" name="paragraphHolder">
+        <p class="col-sm" id="p3">Paragraph 3</p>
+        <p class="col-sm" id="p4">Paragraph 4</p>
+    </div>
+    <div class="row" id="div3" name="btnHolder">
+        <button class="col-sm" id="btn" class="btn-class" disabled>Click Me!</button>
+    </div>
+    <div class="row" id="div4">
+        <!-- Empty On Purpose -->
+    </div>
+</div>
+    <hr/>
+
+    <div id="div5" style="margin-top:15px;">
+        <form>
+            <label for="name" title="Name">Name: </label>
+            <input id="name" type="text" />
+            <br/>
+            <label for="age" title="Age">Age: </label>
+            <input id="age" type="number" />
+            <br/>
+            <label for="favoriteColor" title="Favorite Color">Favorite Color:</label>
+            <input id="favoriteColor" type="color" />
+            <br/>
+            <button type="button" onclick="addToTable()">Add to Table!</button> <!--calls a particular method-->
+        </form>
+
+    </div>
+    <hr/>
+    <div style="margin-top:15px;">
+        <table id="personTable">
+            <tr id="firstRow">
+                <th>Name</th>
+                <th>Age</th>
+                <th>Favorite Color</th>
+            </tr>
+        </table>
+    </div>
+
+    <script type="text/javascript" src="DOMIntroToJs.js"/>
+</body>
+</html>
+
+<!--can add span element to change color of a radio button-->

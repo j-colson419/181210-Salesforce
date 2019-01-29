@@ -14,16 +14,25 @@ function makePerson(n,a){
 /*
 Functions:
     -   they ignore extra parameters passed to them
-    -   funcitons are objects
-    -   cannot be overloaded
+    -   funcitons are objects cannot be overloaded
     -   default data type is undefined(Javascript) vs null(Apex)
     -   they can be passed or stored like any other value
-    -   call functions that are properties of objects "methods"
-    -   every function has a 'this' property. what 'this' returns is bound at invocation time (run time)
+    -   call functions that are properties of objects "methods" (property:value pairs)
+    -   every function has a 'this' property. what 'this' returns is bound at invocation time (run time), see 3 invocation forms below
     -   three different invocations:
         -   global
         -   the current object being created (current instantiation)
         -   references the object your calling the method on
+        - 3 invocation forms:
+            - function
+                myFunc();
+                keyword this refers to the global variable
+            - method
+                somevar.myFunc();
+                keyword this refers to the object it's being called on 
+            - constructor
+                new myFunc();
+                keyword this refers to the object that's being created
 */
 
 function thisFunc(){
@@ -33,13 +42,13 @@ function thisFunc(){
 
 /*
 Scopes
-    -   function scope(local scope)
+    -   function scope(local scope allows, commonlhy see shadowing)
         -   declare a variable  inside a functions using the var keyword
         -   only accessible within the function
-    -   global scope
+    -   global scope (least restrictive)
         -   declared anywhere without using the var keyword
         -   accessable everywhere
-    -   block scope
+    -   block scope (used with let, most restrictive)
         -   declaring a variable with the let keyword
         -   accessable within the block statement or expression it's decalred within
 */
@@ -58,6 +67,16 @@ function printGlobalVar(){
     console.log(globalVar);
 }
 
+/*
+Shadowing vs hoisting
+hoisting brings variable declarations to the of their scope
+- just hoists the declaration to the top of the scope, not the actual variable
+
+shadowing
+- a variable is declared at a more restrictive scope with the same name as an existing variable with less restrictive scope
+- the outer scope will always be less restrictive than the inner scope
+
+*/
 function varTest(){
     var x = 1; // keyword var (non-shadowing)
     if(true){
@@ -93,4 +112,12 @@ function letTest2(){
         console.log(x); // x will not be returned because its within a nested block and not accessable
     }
     console.log(y); // since y is inaccessable from the nested block scope, returns undefined.
+}
+
+document.getElementById("body").addEventListener("click", printPizza, true){
+    console.log("New York Pizza"); 
+}//true handles event during Capturing phase, false handles event during Bubbling phase
+
+document.getElementById("span").onclick = function(e){
+    console.log('something');
 }

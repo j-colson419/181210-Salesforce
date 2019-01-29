@@ -1,23 +1,32 @@
 public class ApexHW1{
 
-    public static Integer nFibonacci(Integer n){
+   public static Integer nFibonacci(Integer n){
 
         /*test cases
         input 0,      output 0
         input 1,      output 1
         input 2,      output 1
-        input 10,     output 55
+        input 10,     output 65
         */
         Integer num1 = 0;
-        Integer num2 = 0; //initialize 1st number to 0
+        Integer num2 = 1;
         Integer nFib;
 
-        while(n != null && n >= 0){
-            nFib = num1 + num2;
-            num1 = num2;
-            num2 = n;
-           
-        }            
+        while(n != null && n >= 0 && n <= 10){
+            if(n == 0){
+                return 0;
+            }
+            else if(n >= 1){
+                nFib = num1 + num2;
+                num1 += num2;
+                num2 += nFib;
+                n++;
+                return nFib;
+            }
+            else{
+                System.debug('NULL POINTER error, please enter a number between 0 and 10');
+            }
+        }
         
         return nFib;
     }
@@ -57,8 +66,18 @@ public class ApexHW1{
         input [1,2,3,4,5], 3        output [4,5,1,2,3]
         */
 
-        return array, n;
+        Integer[] first = array[0];
+        Integer[] next = array[1];
+        Integer[] last = array[].size();
 
+        for(Integer i = 0; i <= n; i++){
+            last[] = last.first[];
+            first[] = first.next[i];
+            next[] = next[i];
+        }
+
+        return array;
+	
     }
 
     public static Boolean bracketsAreBalanced(String s){
@@ -77,11 +96,19 @@ public class ApexHW1{
         ([)]
         return true if balanced and false if unbalanced
         */
+        String[] balBrackets = [{'()','()()','(())','({[]})'},{'{}','{[]}','{([])}','{()}'},{'[]','[()]','[{}]','[{()}]'}];
+        Boolean balanced;
+        Boolean unbalanced;
+        if(s != null && s != ''){
+            for(s : balBrackets[s]){
+                if(s == balBrackets[s] ? balanced : unbalanced){}
+            }   
+        }
+        else{
+            System.debug('NULL POINTER error, please enter a valid bracket or set of brackets');
+        }
         
         return s;
     }
-
-
-
 
 }
