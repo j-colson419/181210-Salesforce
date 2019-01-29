@@ -3,7 +3,7 @@ function Person(n,a){
     this.age=a;
     this.printName=function(){
         console.log(this.name);
-    }
+    };
 }
 
 function makePerson(n,a){
@@ -114,10 +114,9 @@ function letTest2(){
     console.log(y); // since y is inaccessable from the nested block scope, returns undefined.
 }
 
-document.getElementById("body").addEventListener("click", printPizza, true){
-    console.log("New York Pizza"); 
-}//true handles event during Capturing phase, false handles event during Bubbling phase
+document.getElementById("body").addEventListener("click", printPizza, true);
+console.log("New York Pizza"); //true handles event during Capturing phase, false handles event during Bubbling phase
 
 document.getElementById("span").onclick = function(e){
     console.log('something');
-}
+};
