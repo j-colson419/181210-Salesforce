@@ -14,7 +14,7 @@ function makePerson(n,a){
 /*
 Functions:
     -   they ignore extra parameters passed to them
-    -   funcitons are objects cannot be overloaded
+    -   funcitons are objects that cannot be overloaded
     -   default data type is undefined(Javascript) vs null(Apex)
     -   they can be passed or stored like any other value
     -   call functions that are properties of objects "methods" (property:value pairs)

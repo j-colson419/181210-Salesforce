@@ -53,6 +53,7 @@ public class ApexHW1{
 
         while(n != null && n > 0){
             nFact = n * (n-1);
+            --n;
         }
 
         return nfact;
@@ -66,17 +67,17 @@ public class ApexHW1{
         input [1,2,3,4,5], 3        output [4,5,1,2,3]
         */
 
-        Integer[] first = array[0];
-        Integer[] next = array[1];
-        Integer[] last = array[].size();
+        Integer[] first = arr[0];
+        Integer[] next = arr[1];
+        Integer[] last = arr.size();
 
         for(Integer i = 0; i <= n; i++){
-            last[] = last.first[];
-            first[] = first.next[i];
+            last = last.first;
+            first = first.next;
             next[] = next[i];
         }
 
-        return array;
+        return arr;
 	
     }
 
@@ -96,17 +97,8 @@ public class ApexHW1{
         ([)]
         return true if balanced and false if unbalanced
         */
-        String[] balBrackets = [{'()','()()','(())','({[]})'},{'{}','{[]}','{([])}','{()}'},{'[]','[()]','[{}]','[{()}]'}];
-        Boolean balanced;
-        Boolean unbalanced;
-        if(s != null && s != ''){
-            for(s : balBrackets[s]){
-                if(s == balBrackets[s] ? balanced : unbalanced){}
-            }   
-        }
-        else{
-            System.debug('NULL POINTER error, please enter a valid bracket or set of brackets');
-        }
+        List<balancedBrackets> lstBrackets = new List<balancedBrackets>();
+        
         
         return s;
     }
