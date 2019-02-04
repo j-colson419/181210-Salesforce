@@ -10,14 +10,14 @@ var homework = {};
  f(10) = 55
 */
 homework.fibonacci = function(n){
+
 	if(n > 1){
-		return fibonacci(n-1) + fibonacci(n-2); //recursively calls n to 
+	return fibonacci(n-1) + fibonacci(n-2); //recursively calls n to 
 	}
 	else{
-		
 		return n;
-	}
-}
+    }
+};
 
 /*
  2. Sort array of integers
@@ -45,7 +45,7 @@ homework.sort = function(array)
 			}
 		}
 	}
-}//end sort function
+};//end sort function
 
 /*
  3. Return the factorial of n
@@ -61,8 +61,9 @@ homework.factorial = function(n){
 	}
 	else{
 		return n;
-	}
-}
+    }
+    console.log(n);
+};
 
 /*
  4. Rotate left
@@ -87,7 +88,7 @@ homework.rotateLeft = function(array, n)
 		}
 	}
 	console.log('new array after shift: ' + array);
-}
+};
 
 /*
  5. Balanced Brackets
@@ -111,23 +112,24 @@ homework.rotateLeft = function(array, n)
 */
 homework.balancedBrackets = function(bracketsString){
 	var openBracket = [];
-	var j = openBracket.lenght;
+    var j = openBracket.lenght;
+    var balancedBrackets = [];
 	
 	for(i = 0; i < bracketsString.length; i++){
 		if(bracketsString[i] === '(' || bracketsString[i] === '{' || bracketsString[i] === '[' || bracketsString[i] === '<'){
 			openBracket.push(bracketsString[i]);
 		}
 		if(bracketsString[i] === ')' && openBracket[j-1] === '(' ){
-			openBrackets[i].pop;
+			balancedBrackets = openBrackets[i].pop;
 		}
 		if(bracketsString[i] === '}' && openBracket[j-1] === '{' ){
-			openBrackets[i].pop;
+			balancedBrackets = openBrackets[i].pop;
 		}
 		if(bracketsString[i] === ']' && openBracket[j-1] === '[' ){
-			openBrackets[i].pop;
+			balancedBrackets = openBrackets[i].pop;
 		}
 		if(bracketsString[i] === '>' && openBracket[j-1] === '<' ){
-			openBrackets[i].pop;
+			balancedBrackets = openBrackets[i].pop;
 		}
 		if(bracketsString[i] === ')' && openBracket[j-1] !== '(' ){
 			return false;
@@ -143,6 +145,6 @@ homework.balancedBrackets = function(bracketsString){
 		}
 	}//end while loop
 	if(openBracket == isEmpty()){
-		return true;
+		return balancedBrackets;
 	}
-}//end function
+};//end function
