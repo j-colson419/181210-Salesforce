@@ -5,7 +5,7 @@
  */
 
 function getUSA(){
-    var usofa = document.getElementsByTagName("span");
+    var usofa = document.getElementsByTagName("*");
 
     for(i = 0; i < usofa.length; i++){
 
@@ -55,7 +55,7 @@ function getAnchorChildren(){
     //console.log(spans);
     var anchorStack = [];
 
-    for(i = 0; i < spans.length; i++){
+    for(var i = 0; i < spans.length; i++){
 			var nodesChildren = spans[i].childNodes;
 
 			for(var j = 0; j < nodesChildren.length; j++){
@@ -74,7 +74,18 @@ function getAnchorChildren(){
 	Print the value and the contents.
 */
 function getSkills(){
+	var ksa = document.getElementsByTagName("select");
+	console.log(ksa);
+	var kasStack = [];
 
+	for(var i = 0; i < ksa.length; i++){
+		if(ksa[i].name == "skills" && ksa[i].options.selectedIndex == "selected"){
+			console.log(ksa[i]);
+			ksaStack[i].push(ksa[i].value);
+			ksaStack[i].push(ksa[i].innerText);
+		}
+	}
+	return ksaStack;
 }
 
 /*	5. Custom Attribute
@@ -84,23 +95,21 @@ function getSkills(){
 	Print the element that has the attribute.
 */
 function getCustomAttribute(){
-	var elemAttributes = Element.getAttribute("data-customAttr");
+	var elemAttributes = document.getElementsByTagName("*");
 	console.log(elemAttributes);
+	var attrNodes = [];
 	var attrStack = [];
 
     for(var i = 0; i < elemAttributes.length; i++){
-		var attrNodes = elemAttributes[i];
-
+		if(elemAttributes[i].hasAttribute == "data-customAttr"){
+			attrNodes[i].push(elemAttributes);
+		}	
 		for(j = 0; j < attrNodes.length; j++){
-			console.log(attrNodes);
-			/*if(elemAttributes.getNamedItem == "data-customAttr"){
-            console.log(elemAttributes);
-        	}*/
+			attrStack.push(attrNodes[i].value);
 		}
 	}
-	return attrStack;
+	return attrStack + " " + attrNodes;
 }
-
 
 /* 	6. Sum Event
 	NOTE: Write unobtrusive Javascript
@@ -133,13 +142,20 @@ function getCustomAttribute(){
 */
 
 
-
 /*	9. Show/Hide Event
 	NOTE: Write unobtrusive Javascript
 	When user hovers over an employees name:
 	Hide the name if shown.
 	Show the name if hidden.
 */
+function showHideEmployee(){
+	var lstEmps = document.getElementsByTagName("empName");
+
+	if(lstEmps.addEventListener($(selector).mouseover(function (event) {
+		var emp = document.getElementsByClassName("empName");
+		event.target = emp;
+		})));
+}
 
 
 /*	10. Current Time
@@ -155,6 +171,16 @@ function getCustomAttribute(){
 	<p id="helloWorld">Hello, World!</p>
 	Three seconds after a user clicks on this element, change the text to a random color.
 */
+function changeColor(){
+	var lstElems = document.getElementsByTagName("p");
+
+	if(lstElems.addEventListener().onclick(function (event){
+		var helloWorld = document.getElementById("helloWorld")
+		event.target = helloWorld;
+		setTimeout(function(){
+			event.target.style.innerText.color = "";}, 300);
+		}));
+	}
 
 
 /*	12. Walk the DOM
