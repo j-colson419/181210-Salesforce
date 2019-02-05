@@ -76,13 +76,14 @@ function getAnchorChildren(){
 function getSkills(){
 	var ksa = document.getElementsByTagName("select");
 	console.log(ksa);
-	var kasStack = [];
+	var ksaStack = [];
 
 	for(var i = 0; i < ksa.length; i++){
-		if(ksa[i].name == "skills" && ksa[i].options.selectedIndex == "selected"){
+		if(ksa[i].name === "skills"){
+			if(ksa[i].selected == "true")
 			console.log(ksa[i]);
-			ksaStack[i].push(ksa[i].value);
-			ksaStack[i].push(ksa[i].innerText);
+			ksaStack.push(ksa[i].value);
+			ksaStack.push(ksa[i].innerText);
 		}
 	}
 	return ksaStack;
@@ -101,7 +102,7 @@ function getCustomAttribute(){
 	var attrStack = [];
 
     for(var i = 0; i < elemAttributes.length; i++){
-		if(elemAttributes[i].hasAttribute == "data-customAttr"){
+		if(elemAttributes[i].hasAttribute === "data-customAttr"){
 			attrNodes[i].push(elemAttributes);
 		}	
 		for(j = 0; j < attrNodes.length; j++){
@@ -151,7 +152,7 @@ function getCustomAttribute(){
 function showHideEmployee(){
 	var lstEmps = document.getElementsByTagName("empName");
 
-	if(lstEmps.addEventListener($(selector).mouseover(function (event) {
+	if(lstEmps.addEventListener("mouseover",(function (event) {
 		var emp = document.getElementsByClassName("empName");
 		event.target = emp;
 		})));
@@ -174,7 +175,7 @@ function showHideEmployee(){
 function changeColor(){
 	var lstElems = document.getElementsByTagName("p");
 
-	if(lstElems.addEventListener().onclick(function (event){
+	if(lstElems.addEventListener().click(function (event){
 		var helloWorld = document.getElementById("helloWorld")
 		event.target = helloWorld;
 		setTimeout(function(){
